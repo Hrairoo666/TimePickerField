@@ -17,7 +17,7 @@ Ext.define("Ext.TimePickerField", {
             endTime = parseInt(config.endTime, 10) || 2200,
             increment = parseInt(config.increment, 10) || 15,
             value = String(config.value) || "12:00",
-            format = parseInt(config.format) || 24,
+            format = parseInt(config.format,10) || 24,
 
 // This function should generate a human-readable time string based on the
 // integer that's passed in.
