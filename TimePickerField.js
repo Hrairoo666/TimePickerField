@@ -27,8 +27,8 @@ Ext.define("Ext.TimePickerField", {
                     minutes = n % 100,
                     meridian = (format === 12)?"AM":'';
 
-                if (hours === 24 || hours === 0) {
-                    hours = (format === 12)?"12":hours;
+                if ((hours === 24 || hours === 0) && format === 12) {
+                    hours = "12";
                 } else if (hours >= 12 && format === 12) {
                     meridian = "PM";
 
