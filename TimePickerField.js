@@ -16,7 +16,8 @@ Ext.define("Ext.TimePickerField", {
             startTime = config.startTime,
             endTime = parseInt(config.endTime, 10) || 2200,
             increment = parseInt(config.increment, 10) || 15,
-            value = String(config.value) || "12:00 PM",
+            value = String(config.value) || "12:00",
+            format = parseInt(config.format) || 24,
 
 // This function should generate a human-readable time string based on the
 // integer that's passed in.
@@ -24,18 +25,18 @@ Ext.define("Ext.TimePickerField", {
             timeToString = function (n) {
                 var hours = Math.floor(n / 100),
                     minutes = n % 100,
-                    meridian = (config.format === 12)?"AM":'';
+                    meridian = (format === 12)?"AM":'';
 
                 if (hours === 24 || hours === 0) {
-                    hours = (config.format === 12)?"12":hours;
+                    hours = (format === 12)?"12":hours;
                 } else if (hours >= 12) {
-                    meridian = (config.format === 12)?"PM":'';
+                    meridian = (format === 12)?"PM":'';
 
                     if (hours > 12) {
-                        hours = hours - ((config.format === 12)?12:0);
+                        hours = hours - ((format === 12)?12:0);
                     }
                 } else if (hours === 0) {
-                    hours = (config.format === 12)?"12":hours;
+                    hours = (format === 12)?"12":hours;
                 }
 
                 if (minutes < 10) {
