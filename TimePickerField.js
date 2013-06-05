@@ -29,14 +29,14 @@ Ext.define("Ext.TimePickerField", {
 
                 if (hours === 24 || hours === 0) {
                     hours = (format === 12)?"12":hours;
-                } else if (hours >= 12) {
-                    meridian = (format === 12)?"PM":'';
+                } else if (hours >= 12 && format === 12) {
+                    meridian = "PM";
 
                     if (hours > 12) {
-                        hours = hours - ((format === 12)?12:0);
+                        hours = hours - 12;
                     }
-                } else if (hours === 0) {
-                    hours = (format === 12)?"12":hours;
+                } else if (hours === 0 && format === 12) {
+                    hours = "12";
                 }
 
                 if (minutes < 10) {
