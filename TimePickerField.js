@@ -1,4 +1,4 @@
-Ext.define("App.view.TimePickerField", {
+Ext.define("Ext.TimePickerField", {
     extend: "Ext.field.Text",
     xtype: "timepickerfield",
 
@@ -24,18 +24,18 @@ Ext.define("App.view.TimePickerField", {
             timeToString = function (n) {
                 var hours = Math.floor(n / 100),
                     minutes = n % 100,
-                    meridian = "AM";
+                    meridian = (config.format === 12)?"AM":'';
 
                 if (hours === 24 || hours === 0) {
-                    hours = "12";
+                    hours = (config.format === 12)?"12":hours;
                 } else if (hours >= 12) {
-                    meridian = "PM";
+                    meridian = (config.format === 12)?"PM":'';
 
                     if (hours > 12) {
-                        hours = hours - 12;
+                        hours = hours - ((config.format === 12)?12:0);
                     }
                 } else if (hours === 0) {
-                    hours = "12";
+                    hours = (config.format === 12)?"12":hours;
                 }
 
                 if (minutes < 10) {
